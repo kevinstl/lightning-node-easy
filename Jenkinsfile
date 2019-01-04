@@ -74,7 +74,7 @@ pipeline {
       steps {
         script {
           if (kubeEnv?.trim() == 'local') {
-            container('maven') {
+            container('go') {
               sh './undeploy-helm.sh "" || true'
               sh './deploy-helm.sh "" jx-local \$(cat VERSION) lightning-node-easy NodePort 30080'
             }
