@@ -3,7 +3,7 @@ pipeline {
     label "jenkins-go"
   }
   environment {
-    ORG = 'kjwilde-hotmail-com'
+    ORG = 'kevinstl'
     APP_NAME = 'lightning-node-easy'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
   }
