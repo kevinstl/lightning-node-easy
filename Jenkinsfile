@@ -70,6 +70,19 @@ pipeline {
 //      }
 //    }
 
+    stage('Deploy Local') {
+      steps {
+        script {
+          if (kubeEnv?.trim() == 'local') {
+            container('maven') {
+              sh './undeploy-helm.sh "" || true'
+              sh './deploy-helm.sh "" jx-local \$(cat VERSION) lightning-node-easy NodePort 30080'
+            }
+          }
+        }
+      }
+    }
+
     stage('push branch') {
       when {
         expression { env.KUBE_ENV == 'local' }
