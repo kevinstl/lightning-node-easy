@@ -75,15 +75,9 @@ pipeline {
         expression { env.KUBE_ENV == 'local' }
       }
       steps {
-//          container('nodejs') {
-//            sh "git config remote.origin.url https://github.com/kevinstl/wildeBot.git"
-//            sh "git config --global credential.helper store"
-//            sh "jx step git credentials"
-//            sh "git push origin HEAD"
-//          }
         script {
           if (kubeEnv?.trim() == 'local') {
-            container('nodejs') {
+            container('go') {
               sh "./push.sh ${env.BRANCH_NAME}"
             }
           }
@@ -177,7 +171,9 @@ def release() {
   }
   container('go') {
 //    sh "npm install"
-    sh "CI=true DISPLAY=:99 npm test"
+//    sh "CI=true DISPLAY=:99 npm test"
+
+    sh "make build"
 
     sh 'export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml'
 
