@@ -9,7 +9,7 @@ then
 fi
 
 
-helm ${kubeContextArg} del --purge cryptocurrency-services-api-gateway
+helm ${kubeContextArg} del --purge lightning-node-easy
 
 #if [ $? -eq 0 ]
 #then

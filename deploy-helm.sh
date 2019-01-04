@@ -40,7 +40,7 @@ then
 fi
 
 
-helm ${kubeContextArg} ${namespaceArg} install -n cryptocurrency-services-api-gateway --set database=${database} ${serviceTypeArg} ${nodePortArg} --set image.tag=${imageTag} charts/cryptocurrency-services-api-gateway
+helm ${kubeContextArg} ${namespaceArg} install -n lightning-node-easy --set database=${database} ${serviceTypeArg} ${nodePortArg} --set image.tag=${imageTag} charts/lightning-node-easy
 
 
 if [ $? -eq 0 ]
